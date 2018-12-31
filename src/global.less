@@ -1,0 +1,92 @@
+/*
+ * @Author: lin.zehong
+ * @Date: 2018-12-20 15:00:27
+ * @Last Modified by: lin.zehong
+ * @Last Modified time: 2018-12-29 14:45:43
+ * @Desc: 用于存放全局变量，比如 边框颜色 不同类型的字体颜色 大小
+ */
+
+// @import "antd/dist/antd.less";   // 引入官方提供的 less 样式入口文件
+
+.baseBorder(@radius: 4px) {
+  border: 1px solid @border-color;
+  border-radius: @radius;
+}
+
+// 一下为全局样式
+html,
+body,
+:global(#root) {
+  height: 100%;
+  margin: 0;
+}
+
+:global(.ant-layout) {
+  min-height: 100vh;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+canvas {
+  display: block;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+figure,p{
+  margin-bottom: 0;
+}
+.globalSpin {
+  width: 100%;
+  margin: 40px 0 !important;
+}
+a{
+  text-decoration: none;
+}
+
+// temp fix for https://github.com/ant-design/ant-design/commit/a1fafb5b727b62cb0be29ce6e9eca8f579d4f8b7
+:global {
+  .ant-spin-container {
+    overflow: visible !important;
+  }
+}
+
+:global {
+  .ant-layout-sider {
+    background: #001529 !important;
+  }
+  .ant-menu-dark,
+  .ant-menu-dark .ant-menu-sub {
+    background: #001529 !important;
+  }
+  .ant-layout-header {
+    height: 64px;
+    line-height: 64px;
+  }
+  .ant-layout.ant-layout-has-sider {
+    display: flex;
+  }
+  .ant-layout{
+    display: inline;
+  }
+}
+
+:global {
+  .ant-carousel .slick-dots li.slick-active button {
+    background: #ccc;
+  }
+  .ant-carousel .slick-dots li {
+    background: #ccc;
+  }
+}

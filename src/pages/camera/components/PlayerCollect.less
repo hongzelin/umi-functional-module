@@ -1,0 +1,29 @@
+.root{
+  .name{
+    position: absolute;
+    top: 5px;
+    right: 32px;
+    cursor: pointer;
+    font-size: 12px;
+    color: @primary-color;
+  }
+}
+.treeWrap{
+  position: relative;
+  .iconClose{
+    position: absolute;
+    top: -34px;
+    right: 0;
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+    &:hover{
+      color: @primary-color;
+    }
+  }
+  .btnWrap{
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 0 5px;
+  }
+}

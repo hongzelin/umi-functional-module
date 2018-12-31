@@ -1,0 +1,33 @@
+.root{
+  position: relative;
+  max-height: 365px;
+  min-height: 350px;
+  overflow-y: auto;
+  margin-top: 5px;
+  padding-top: 0;
+}
+.root.hideTree{
+  height: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+.insWrapBtn{
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  button {
+    margin: 0 12px;
+  }
+}
+.categs_tree_rightmenu{
+  > li{
+    line-height: 20px!important;
+    height: 20px!important;
+  }
+}
+:global{
+  .deleteStyle.ant-modal-confirm-confirm .ant-modal-confirm-body > .anticon{
+    color: #f5222d;
+  }
+}
+

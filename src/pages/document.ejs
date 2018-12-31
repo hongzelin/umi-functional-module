@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/fonts/iconfont.css" />
+  <title>系统模块</title>
+  <!-- 视频 测试环境-->
+  <link rel="stylesheet" href="/prismplayer/2.7.2/skins/default/aliplayer-min.css" />
+  <script charset="utf-8" type="text/javascript" src="/prismplayer/2.7.2/aliplayer.js"></script>
+  <script charset="utf-8" type="text/javascript" src="/prismplayer/2.7.2/flv/aliplayer-flv-min.js"></script>
+  <script charset="utf-8" type="text/javascript" src="/prismplayer/2.7.2/hls/aliplayer-hls-min.js"></script>
+  <!-- 视频 测试环境end -->
+
+  <!-- 直播 生产环境 -->
+  <!-- <link rel="stylesheet" href="../static/prismplayer/2.7.2/skins/default/aliplayer-min.css">
+  <script charset="utf-8" type="text/javascript" src="../static/prismplayer/2.7.2/aliplayer.js"></script>
+  <script charset="utf-8" type="text/javascript" src="../static/prismplayer/2.7.2/flv/aliplayer-flv-min.js"></script>
+  <script charset="utf-8" type="text/javascript" src="../static/prismplayer/2.7.2/hls/aliplayer-hls-min.js"></script> -->
+  <!-- 直播end -->
+
+  <script>
+    var isLAN = (() => {
+      /* 是否内网的标识，用于区分内网地图，可在后面追加内网IP */
+      var lanIP = ['172.19.60.6'];
+      for (var i = 0; i < lanIP.length; i++) {
+        var ip = lanIP[i];
+        if (ip === location.hostname) {
+          return true;
+        }
+      }
+      return false;
+    })();
+    // var host = isLAN ? '15.75.0.255' : '15.75.0.255';    // 打包生产环境
+    var host = isLAN ? '106.14.5.29' : '106.14.5.29';     // 开发环境
+    document.write('<script type="text/javascript" src="http://' + host + ':25001/as/webapi/js/auth?v=2.0&t=jsmap&ak=ec85d3648154874552835438ac6a02b2"><\/script>');</script>
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+
+</html>

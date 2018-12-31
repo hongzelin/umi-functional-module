@@ -1,0 +1,35 @@
+.tableHeard{
+  margin-bottom: 4px;
+  .titleLeft{
+      font-size: 16px;
+  }
+  .tableSearch{
+      float: right;
+      :global(.ant-form-item) {
+          float: left;
+          margin: -4px 0 0 0;
+      }
+      button{
+          margin-left: 16px;
+      }
+      &.sysSearch {
+          :global(.ant-form-item) {
+              margin: 0;
+          }
+      }
+  }  
+}
+.tdWidth{
+ :global(.ant-table-row) {
+  :global(td) {
+      max-width: 200px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden; 
+  }
+ }
+}
+
+.tableQueryForm{
+  text-align: right;
+}

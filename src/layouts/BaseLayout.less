@@ -1,0 +1,40 @@
+@import "../global.less";
+
+.normal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color .3s;
+}
+
+.trigger:hover {
+  color: #1890ff;
+}
+
+.logo {
+  height: 32px;
+  margin: 16px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  .title{
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 2px;
+    overflow: hidden;
+    width: 120px;
+  }
+}
+.active{
+  .title{
+    width: 0;
+  }
+}

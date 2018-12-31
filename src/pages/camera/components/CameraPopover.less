@@ -1,0 +1,60 @@
+.iconList{
+  list-style-type: none;
+  padding-left: 0;
+  .iconitem{
+    font-size: 12px;
+    .title{
+      color: #999;
+      width: 70px;
+      display: inline-block;
+      text-align: left;
+    }
+    .val{
+      color: #333;
+      display: inline-block;
+      text-align: left;
+    }
+  }
+}
+.playerWrap{
+  width: 300px;
+  position: relative;
+}
+
+
+.root{
+  height: 200px;
+  position: relative;
+  .content{
+    height: 92%;
+    .video{
+      background: #000;
+      height: 100%;
+      padding: 10px;
+    }
+  }
+
+  .iconClose{
+    position: absolute;
+    top: -34px;
+    right: 0;
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+    &:hover{
+      color: @primary-color;
+    }
+  }
+  i{
+    font-size: 16px!important;
+    color: #1890FF!important;
+  }
+  i.active{
+    font-size: 20px!important;
+    color: #ea414f!important;
+  }
+  i:hover{
+    font-size: 20px!important;
+    color: #ea414f!important;
+  }
+}

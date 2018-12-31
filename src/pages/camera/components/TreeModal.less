@@ -1,0 +1,39 @@
+.root{
+  .content{
+    font-size: 12px;
+    margin-top: 8px;
+    .topWrap{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .num, .time{
+        color: @primary-color;
+      }
+      .num {
+        margin: 0 5px;
+      }
+    }
+    .botWrap{
+      display: flex;
+      align-items: center;
+      margin-top: 24px;
+    }
+  }
+  .grp{
+    :global{
+      .ant-radio-button-wrapper-checked:first-child {
+        border-color: #d9d9d9;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+      }
+      .ant-radio-button-wrapper-checked {
+        background: #fff;
+        border-color: #d9d9d9;
+        color: rgba(0, 0, 0, 0.65);
+        -webkit-box-shadow: -1px 0 0 0 #d9d9d9;
+        box-shadow: -1px 0 0 0 #d9d9d9;
+        z-index: 1;
+    }
+    }
+  }
+}
