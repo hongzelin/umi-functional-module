@@ -22,6 +22,9 @@ function BaseMenu({ location }) {
         <Menu.Item key="/system/menu">
           <Link to="/system/menu"><span>菜单管理</span></Link>
         </Menu.Item>
+        <Menu.Item key="/system/privilege">
+          <Link to="/system/privilege"><span>权限管理</span></Link>
+        </Menu.Item>
       </SubMenu>
       <Menu.Item key="/umi">
         <a href="https://github.com/umijs/umi" target="_blank"><span>umi</span></a>

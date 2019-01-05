@@ -2,7 +2,7 @@
  * @Author: lin.zehong
  * @Date: 2018-08-07 17:17:26
  * @Last Modified by: lin.zehong
- * @Last Modified time: 2018-12-30 16:58:10
+ * @Last Modified time: 2019-01-05 21:48:34
  * @Desc: Tree && TreeSelect 组件
  */
 
@@ -67,7 +67,7 @@ class ParentTreeSelect extends PureComponent {
               title: colums.isSpecialTitle ? `${data[i][colums.title]}(${data[i].menuUrl})` : data[i][colums.title],
               key: data[i][colums.key],
               level: data[i][colums.level],
-              value: `${data[i][colums.value]}""`,
+              value: `${data[i][colums.value]}`,
               isLeaf: data[i][colums.isLeaf],
             });
           }

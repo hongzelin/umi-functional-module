@@ -113,16 +113,65 @@ export default {
     res.status(200).json(data);
   },
 
-
   // 菜单end
+
+  // 权限
 
   'POST /apis/system/privilegesController/qryPrivilegesPage': (req, res) => {
     res.json({
-      "data": { "totalCount": 6, "pageInfo": { "currentPage": 1, "pageSize": 5, "totalRow": 6, "pageCount": 2 }, "page": 1, "list": [{ "privId": 1, "privName": "系统管理员", "parentPrivId": -1, "privLevel": 1, "useState": 10301, "createUserId": null, "createTime": 1532131513000, "isLeaf": null, "related": null, "parentPrivname": "根权限", "children": [{ "privId": 55, "privName": "特殊测试", "parentPrivId": 1, "privLevel": 2, "useState": 10301, "createUserId": 600015, "createTime": 1532356380000, "isLeaf": true, "related": null, "parentPrivname": "系统管理员", "children": null, "disabled": null, "leaf": true }], "disabled": null, "leaf": null }, { "privId": 54, "privName": "普通用户", "parentPrivId": -1, "privLevel": 1, "useState": 10301, "createUserId": 600015, "createTime": 1532135611000, "isLeaf": true, "related": null, "parentPrivname": "根权限", "children": null, "disabled": null, "leaf": true }, { "privId": 68, "privName": "测试1", "parentPrivId": -1, "privLevel": 1, "useState": 10301, "createUserId": 600015, "createTime": 1532551120000, "isLeaf": true, "related": null, "parentPrivname": "根权限", "children": null, "disabled": null, "leaf": true }, { "privId": 69, "privName": "测试2", "parentPrivId": -1, "privLevel": 1, "useState": 10301, "createUserId": 600015, "createTime": 1532551133000, "isLeaf": true, "related": null, "parentPrivname": "根权限", "children": null, "disabled": null, "leaf": true }, { "privId": 70, "privName": "测试3", "parentPrivId": -1, "privLevel": 1, "useState": 10301, "createUserId": 600015, "createTime": 1532551502000, "isLeaf": true, "related": null, "parentPrivname": "根权限", "children": null, "disabled": null, "leaf": true }] }, "code": "0", "message": "SUCCESS",
-      errCode: '0',
-      errMsg: '成功',
+      "data": [{ "privId": 1, "privName": "系统管理员", "parentPrivId": -1, "privLevel": 1, "useState": 10301, "createUserId": null, "createTime": 1532131513000, "isLeaf": null, "related": null, "parentPrivname": "根权限", "children": [{ "privId": 55, "privName": "特殊测试", "parentPrivId": 1, "privLevel": 2, "useState": 10301, "createUserId": 600015, "createTime": 1532356380000, "isLeaf": true, "related": null, "parentPrivname": "系统管理员", "children": null, "disabled": null, "leaf": true }], "disabled": null, "leaf": null }, { "privId": 54, "privName": "普通用户", "parentPrivId": -1, "privLevel": 1, "useState": 10301, "createUserId": 600015, "createTime": 1532135611000, "isLeaf": true, "related": null, "parentPrivname": "根权限", "children": null, "disabled": null, "leaf": true }, { "privId": 68, "privName": "测试1", "parentPrivId": -1, "privLevel": 1, "useState": 10301, "createUserId": 600015, "createTime": 1532551120000, "isLeaf": true, "related": null, "parentPrivname": "根权限", "children": null, "disabled": null, "leaf": true }, { "privId": 69, "privName": "测试2", "parentPrivId": -1, "privLevel": 1, "useState": 10301, "createUserId": 600015, "createTime": 1532551133000, "isLeaf": true, "related": null, "parentPrivname": "根权限", "children": null, "disabled": null, "leaf": true }, { "privId": 70, "privName": "测试3", "parentPrivId": -1, "privLevel": 1, "useState": 10301, "createUserId": 600015, "createTime": 1532551502000, "isLeaf": true, "related": null, "parentPrivname": "根权限", "children": null, "disabled": null, "leaf": true }, { "privId": 71, "privName": "测试4", "parentPrivId": -1, "privLevel": 1, "useState": 10301, "createUserId": 600015, "createTime": 1532551502000, "isLeaf": true, "related": null, "parentPrivname": "根权限", "children": null, "disabled": null, "leaf": true }],
+      "errCode": '0',
+      "errMsg": '成功',
+      "totalCount": 6,
     });
   },
+
+  'POST /apis/system/privilegesController/qryPrivilegesByParent': (req, res) => {
+    res.json({
+      "data": [{
+        "privId": 72,
+        "privName": "测试5",
+        "parentPrivId": -1,
+        "privLevel": 1,
+        "useState": 10301,
+        "createUserId": 600015,
+        "createTime": 1532551548000,
+      }],
+      "errCode": '0',
+      "errMsg": '成功',
+      "totalCount": 6,
+    });
+  },
+
+  'POST /apis/system/privilegesController/addPrivileges': (req, res) => {
+    res.json({
+      "data": {},
+      "errCode": '0',
+      "errMsg": '成功',
+    });
+  },
+
+  'POST /apis/system/privilegesController/editPrivileges': (req, res) => {
+    res.json({
+      "data": {},
+      "errCode": '0',
+      "errMsg": '成功',
+    });
+  },
+
+  'POST /apis/system/privilegesController/delPrivileges': (req, res) => {
+    res.json({
+      "data": {},
+      "errCode": '0',
+      "errMsg": '成功',
+    });
+  },
+
+
+
+
+
+
 
   'POST /apis/system/loginController/getLoginInfo': (req, res) => {
     res.json({
