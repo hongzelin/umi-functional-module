@@ -107,5 +107,20 @@ export const addPrivileges = ({ privLevel, privName, parentPrivId }) =>
 export const qryPrivilegesDetail = ({ menuId }) =>
   post('/system/privilegesController/qryPrivilegesDetail', { menuId });
 
+/**
+* 删除权限菜单关联
+* @param {number} privId - 权限Id
+* @param {number} menuId - 菜单Id
+*/
+export const delPrivMenu = ({ privId, menuId }) =>
+  post('/system/privMenuController/delPrivMenu', { privId, menuId });
 
-
+/**
+* 新增权限菜单关联
+* @param {array} list - ListMap，对象属性如下
+*     @param {number} privId - 权限id
+*     @param {number} menuId - 菜单id
+*     @param {string} privObjectId - 菜单id
+*/
+export const addPrivMenu = ({ list }) =>
+  post('/system/privMenuController/addPrivMenu', { list });

@@ -2,13 +2,14 @@
  * @Author: lin.zehong
  * @Date: 2018-12-25 15:53:45
  * @Last Modified by: lin.zehong
- * @Last Modified time: 2019-01-05 22:06:58
+ * @Last Modified time: 2019-01-07 15:41:42
  * @Desc: 菜单管理
  */
 
 import React from 'react';
 import { connect } from "dva";
-import { Form, message, Button, Modal } from 'antd';
+import { Form, message, Modal } from 'antd';
+// import { Form, message, Button, Modal } from 'antd';
 import HeaderSearch from '../../common/HeaderSearch';
 import Table from '../../../../components/table/Table';
 import { PrivilegeColumns } from './PrivilegeColumns';
@@ -27,6 +28,11 @@ class PrivilegePage extends React.Component {
     thisTime: '', // 判断查看还是修改
     query: {},
   };
+
+  componentWillUnmount = () => {
+    this.onRowClick();
+  };
+
 
   // 表头重置
   handleFormReset = () => {
@@ -151,13 +157,35 @@ class PrivilegePage extends React.Component {
     this.setState({ modalVisible: false });
   }
 
+  // antd Table onRow事件
+  onRow = (record, index) => {
+    return {
+      onClick: () => { this.onRowClick(record, index); }, // 点击行
+    };
+  }
+
+  // 权限点击事件，关联菜单
+  onRowClick = (record, index) => {
+    if (record) {
+      this.handleSelectRows([record.privId]); // 点击的时候，同时选中，增加样式
+    }
+    const { dispatch } = this.props;
+    dispatch({
+      type: 'privilegeModel/changeRow',
+      payload: {
+        clickedRow: record || {},
+        index,
+      },
+    })
+  }
+
   render() {
     const { selectedRows, query, modalVisible, menuSysData, thisTime } = this.state;
     const columns = PrivilegeColumns(this.handleView, this.handleUpdate, this.handleDelete);
-    const rowSelection = {
-      selectedRowKeys: selectedRows,
-      onChange: this.handleSelectRows,
-    };
+    // const rowSelection = {
+    //   selectedRowKeys: selectedRows,
+    //   onChange: this.handleSelectRows,
+    // };
     const MenuFormContent = (
       <PrivilegeForm
         menuSysData={menuSysData}
@@ -179,14 +207,14 @@ class PrivilegePage extends React.Component {
           handleSearch={this.handleSearch}
         />
         <div className={styles.tableListOperator}>
-          {
+          {/*
             // 控制批量删除按扭的显示和隐藏
             selectedRows.length > 0 && (
               <span>
                 <Button type="danger" onClick={() => { this.handleDeleteBatch(); }}>批量删除</Button>
               </span>
             )
-          }
+           */}
         </div>
         <Table
           api='/system/privilegesController/qryPrivilegesPage'
@@ -194,10 +222,12 @@ class PrivilegePage extends React.Component {
           rowKey="privId"
           pagination
           query={query}
-          rowSelection={rowSelection}
-          isShowTip
-          selectKeysNums={selectedRows.length}
-          handleSelectRows={this.handleSelectRows}
+          // rowSelection={rowSelection}
+          // isShowTip
+          // selectKeysNums={selectedRows.length}
+          // handleSelectRows={this.handleSelectRows}
+          selectedRows={selectedRows}
+          onRow={this.onRow}
         />
         {modalVisible ? MenuFormContent : null}
       </div>

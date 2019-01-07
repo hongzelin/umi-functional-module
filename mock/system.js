@@ -167,6 +167,87 @@ export default {
     });
   },
 
+  // 查询权限关联菜单列表
+  'POST /apis/system/privMenuController/qryPrivMenuPage': (req, res) => {
+    res.json({
+      "data": [{
+        "menuId": 48,
+        "menuName": "监控报警",
+        "menuUrl": "/monitoring",
+        "menuIcon": "icon-monitor",
+        "orderId": 6,
+        "parentMenuId": -1,
+        "menuLevel": 1,
+        "useState": 10301,
+        "createUserId": 1,
+        "createTime": 1532102570000,
+      }],
+      "errCode": '0',
+      "errMsg": '成功',
+      "totalCount": 1,
+    });
+  },
+
+  'POST /apis/system/privMenuController/delPrivMenu': (req, res) => {
+    res.json({
+      "data": {},
+      "errCode": '0',
+      "errMsg": '成功',
+    });
+  },
+
+  'POST /apis/system/privMenuController/qryPrivMenuPageCascade': (req, res) => {
+    res.json({
+      "data": [
+        {
+          "menuId": 62,
+          "menuName": "首页",
+          "menuUrl": "/",
+          "menuIcon": "icon-home",
+          "orderId": 1,
+          "parentMenuId": -1,
+          "menuLevel": 1,
+          "useState": 10301,
+          "createUserId": 1,
+          "createTime": 1532133546000,
+          "children": null,
+          "isLeaf": true,
+          "related": "1",
+          "parentMenuName": null,
+          "disabled": true,
+        },
+        {
+          "menuId": 44,
+          "menuName": "源端配置",
+          "menuUrl": "/ziyuan",
+          "menuIcon": "icon-home",
+          "orderId": 1,
+          "parentMenuId": -1,
+          "menuLevel": 1,
+          "useState": 10301,
+          "createUserId": 1,
+          "createTime": 1532133546000,
+          "children": null,
+          "isLeaf": true,
+          "related": "2",
+          "parentMenuName": null,
+          "disabled": true,
+        },
+      ],
+      "errCode": '0',
+      "errMsg": '成功',
+      "totalCount": 2,
+    });
+  },
+
+  'POST /apis/system/privMenuController/addPrivMenu': (req, res) => {
+    res.json({
+      "data": {},
+      "errCode": '0',
+      "errMsg": '成功',
+    });
+  },
+
 
 
 
@@ -195,12 +276,6 @@ export default {
       errCode: '0',
       errMsg: '成功',
     });
-  },
-
-  'POST /apis/system/privMenuController/qryPrivMenuPage': (req, res) => {
-    res.json(
-      { "data": { "totalCount": 6, "pageInfo": { "currentPage": 0, "pageSize": 5, "totalRow": 6, "pageCount": 0 }, "page": 0, "list": [{ "menuId": 123, "menuName": "首页", "menuUrl": "pichome", "menuIcon": "home", "orderId": 1, "parentMenuId": -1, "menuLevel": 1, "useState": 10301, "createUserId": "320322199108188376", "updateUserId": null, "createTime": "2018-08-13 18:59:04", "updateTime": null }, { "menuId": 124, "menuName": "视频结构化", "menuUrl": "video-structured", "menuIcon": "stru", "orderId": 2, "parentMenuId": -1, "menuLevel": 1, "useState": 10301, "createUserId": "320322199108188376", "updateUserId": null, "createTime": "2018-08-13 19:00:02", "updateTime": null }, { "menuId": 125, "menuName": "运维监控", "menuUrl": "picmonitor", "menuIcon": "oper", "orderId": 3, "parentMenuId": -1, "menuLevel": 1, "useState": 10301, "createUserId": "320322199108188376", "updateUserId": null, "createTime": "2018-08-13 19:00:28", "updateTime": null }, { "menuId": 126, "menuName": "日志审计", "menuUrl": "piclogperation", "menuIcon": "log", "orderId": 4, "parentMenuId": -1, "menuLevel": 1, "useState": 10301, "createUserId": "320322199108188376", "updateUserId": null, "createTime": "2018-08-13 19:00:46", "updateTime": null }, { "menuId": 127, "menuName": "系统管理", "menuUrl": "systemmng", "menuIcon": "sys", "orderId": 5, "parentMenuId": -1, "menuLevel": 1, "useState": 10301, "createUserId": "320322199108188376", "updateUserId": null, "createTime": "2018-08-13 19:01:21", "updateTime": null }, { "menuId": 128, "menuName": "算法评测数据", "menuUrl": "date-visual", "menuIcon": "oper", "orderId": 6, "parentMenuId": -1, "menuLevel": 1, "useState": 10301, "createUserId": "320322199108188376", "updateUserId": null, "createTime": "2018-08-15 11:09:43", "updateTime": null }] }, "code": "0", "message": "SUCCESS", "errCode": "0", "errMsg": "SUCCESS" }
-    );
   },
 
   'POST /apis/system/apiController/qryApiPage': (req, res) => {

@@ -1,8 +1,8 @@
 /*
  * @Author: lin.zehong
  * @Date: 2018-12-29 09:52:04
- * @Last Modified by:   lin.zehong
- * @Last Modified time: 2018-12-29 09:52:04
+ * @Last Modified by: lin.zehong
+ * @Last Modified time: 2019-01-07 14:05:57
  * @Desc: 基础Table组件，基于Antd Table
  */
 import React from 'react';
@@ -22,6 +22,7 @@ import styles from './Table.less';
  *      isShowTip 是否显示tip头部提示 bool
  *      handleSelectRows 清除方法
  *      selectKeysNums 复选框选择的数量
+ *    selectedRows 复选框选中的row
  *
  * state值：
  *    list 列表数据
@@ -111,9 +112,21 @@ class TableTemplate extends React.Component {
     this.getData();
   }
 
+  rowClassName = (record) => {
+    const { selectedRows } = this.props;
+    if (!selectedRows || selectedRows.length <= 0) return;
+    for (let i = 0; i < selectedRows.length; i += 1) {
+      if (record.privId && selectedRows[i] === record.privId) { // 只针对权限做处理，点击选中行。
+        // 点击行的样式
+        return 'ant-table-row-selected';
+      }
+    }
+    return '';
+  }
+
   render() {
     const { pageSize, total, pageNum, list } = this.state;
-    const { columns, pagination, loading, rowSelection, rowKey, isShowTip, selectKeysNums, handleSelectRows } = this.props;
+    const { columns, pagination, loading, rowSelection, onRow, rowKey, isShowTip, selectKeysNums, handleSelectRows } = this.props;
 
     const tipContent = (
       <div className={styles.message}>
@@ -158,6 +171,8 @@ class TableTemplate extends React.Component {
               pagination={pagination ? paginationData : false}
               rowKey={record => record[rowKey]}
               rowSelection={rowSelection}
+              onRow={onRow}
+              rowClassName={this.rowClassName} // 权限选中样式特殊处理
             // expandedRowKeys={expandedRowKeys}
             />
           </div>

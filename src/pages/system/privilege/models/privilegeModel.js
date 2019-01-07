@@ -8,52 +8,19 @@
 
 import * as privilegeService from '../services/privilegeService';
 
-const { AddMenuSys, DelMenuSys, EditMenuSys, qryMenuDetail, qryParMenuInfo, checkMenuName, checkMenuUrl,
-  qryPrivilegesByParent, addPrivileges, editPrivileges, delPrivileges,
-} = privilegeService;
+const { qryPrivilegesByParent, addPrivileges, editPrivileges, delPrivileges, delPrivMenu, addPrivMenu } = privilegeService;
 
 export default {
   namespace: 'privilegeModel',
   state: {
-    list: [],
+    clickedRow: {}, // 权限选择的行，用来关联菜单
   },
   reducers: {
-    save(state, { payload: { data: list, total, page } }) {
-      return { ...state, list, total, page };
+    changeRow(state, { payload: { clickedRow } }) {
+      return { ...state, clickedRow };
     },
   },
   effects: {
-    *AddMenu({ payload }, { call }) {
-      const data = yield call(AddMenuSys, payload);
-      return data;
-    },
-    *DelMenu({ payload }, { call }) {
-      const data = yield call(DelMenuSys, payload);
-      return data;
-    },
-    *EditMenu({ payload }, { call }) {
-      const data = yield call(EditMenuSys, payload);
-      return data;
-    },
-    *DetailMenu({ payload }, { call }) {
-      const data = yield call(qryMenuDetail, payload);
-      return data;
-    },
-    *qryParMenuInfo({ payload }, { call }) {
-      const data = yield call(qryParMenuInfo, payload);
-      return data;
-    },
-    *checkMenuName({ payload }, { call }) {
-      const data = yield call(checkMenuName, payload);
-      return data;
-    },
-    *checkMenuUrl({ payload }, { call }) {
-      const data = yield call(checkMenuUrl, payload);
-      return data;
-    },
-
-
-
     *qryPrivilegesByParent({ payload }, { call }) {
       const data = yield call(qryPrivilegesByParent, payload);
       return data;
@@ -68,6 +35,14 @@ export default {
     },
     *delPrivileges({ payload }, { call }) {
       const data = yield call(delPrivileges, payload);
+      return data;
+    },
+    *delPrivMenu({ payload }, { call }) {
+      const data = yield call(delPrivMenu, payload);
+      return data;
+    },
+    *addPrivMenu({ payload }, { call }) {
+      const data = yield call(addPrivMenu, payload);
       return data;
     },
   },
