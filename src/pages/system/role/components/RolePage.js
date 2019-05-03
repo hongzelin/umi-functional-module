@@ -2,19 +2,18 @@
  * @Author: lin.zehong
  * @Date: 2018-12-25 15:53:45
  * @Last Modified by: lin.zehong
- * @Last Modified time: 2019-05-02 23:30:06
+ * @Last Modified time: 2019-05-03 11:34:59
  * @Desc: 权限管理
  */
 
 import React from 'react';
 import { connect } from "dva";
 import { Form, message, Modal } from 'antd';
-// import { Form, message, Button, Modal } from 'antd';
 import HeaderSearch from '../../common/HeaderSearch';
 import Table from '../../../../components/table/Table';
-import { PrivilegeColumns } from './PrivilegeColumns';
-import PrivilegeForm from './PrivilegeForm';
-import styles from './PrivilegePage.less';
+import { RColumns } from './RoleColumns';
+import RoleForm from './RoleForm';
+import styles from './RolePage.less';
 
 const { confirm } = Modal;
 
@@ -45,7 +44,7 @@ class PrivilegePage extends React.Component {
     const { form } = this.props;
     form.validateFields((err, fieldsValue) => {
       if (err) return;
-      fieldsValue.privName = params.privName ? params.privName : fieldsValue.privName;
+      fieldsValue.rolesName = params.rolesName ? params.rolesName : fieldsValue.rolesName;
       fieldsValue.isReset = !!params.isReset;
       const values = {
         ...fieldsValue,
@@ -89,11 +88,11 @@ class PrivilegePage extends React.Component {
     let params = {};
     if (Array.isArray(row)) {
       for (let i = 0; i < row.length; i += 1) {
-        params = { privId: row[i] };
+        params = { rolesId: row[i] };
         this.toDelete(params);
       }
     } else {
-      params = { privId: row.privId }; // 菜单id，必填
+      params = { rolesId: row.rolesId }; // 角色id，必填
       this.toDelete(params);
     }
     this.handleSelectRows([]);
@@ -103,7 +102,7 @@ class PrivilegePage extends React.Component {
   toDelete = (params) => {
     const { dispatch } = this.props;
     dispatch({
-      type: 'privilegeModel/delPrivileges',
+      type: 'roleModel/delRoles',
       payload: params,
     }).then(result => {
       if (result && result.errCode === "0") {
@@ -163,14 +162,14 @@ class PrivilegePage extends React.Component {
     };
   }
 
-  // 权限点击事件，关联菜单
+  // 角色点击事件，关联权限
   onRowClick = (record, index) => {
     if (record) {
       this.handleSelectRows([record.privId]); // 点击的时候，同时选中，增加样式
     }
     const { dispatch } = this.props;
     dispatch({
-      type: 'privilegeModel/changeRow',
+      type: 'roleModel/changeRow',
       payload: {
         clickedRow: record || {},
         index,
@@ -180,13 +179,9 @@ class PrivilegePage extends React.Component {
 
   render() {
     const { selectedRows, query, modalVisible, menuSysData, thisTime } = this.state;
-    const columns = PrivilegeColumns(this.handleView, this.handleUpdate, this.handleDelete);
-    // const rowSelection = {
-    //   selectedRowKeys: selectedRows,
-    //   onChange: this.handleSelectRows,
-    // };
+    const columns = RColumns(this.handleUpdate, this.handleDelete);
     const MenuFormContent = (
-      <PrivilegeForm
+      <RoleForm
         menuSysData={menuSysData}
         thisTime={thisTime}
         handleModalVisible={this.handleModalVisible}
@@ -197,34 +192,20 @@ class PrivilegePage extends React.Component {
     return (
       <div className={styles.root}>
         <HeaderSearch
-          title="权限管理"
-          placeholder="请输入权限名称"
-          btnText="新增权限"
-          fieldName="privName"
+          title="角色管理"
+          placeholder="请输入角色名称"
+          btnText="新增角色"
+          fieldName="rolesName"
           handleAdd={this.handleAdd}
           handleFormReset={this.handleFormReset}
           handleSearch={this.handleSearch}
         />
-        <div className={styles.tableListOperator}>
-          {/*
-            // 控制批量删除按扭的显示和隐藏
-            selectedRows.length > 0 && (
-              <span>
-                <Button type="danger" onClick={() => { this.handleDeleteBatch(); }}>批量删除</Button>
-              </span>
-            )
-           */}
-        </div>
         <Table
-          api='/system/privilegesController/qryPrivilegesPage'
+          api='/system/rolesController/qryRolesPage'
           columns={columns}
-          rowKey="privId"
+          rowKey="rolesId"
           pagination
           query={query}
-          // rowSelection={rowSelection}
-          // isShowTip
-          // selectKeysNums={selectedRows.length}
-          // handleSelectRows={this.handleSelectRows}
           selectedRows={selectedRows}
           onRow={this.onRow}
         />

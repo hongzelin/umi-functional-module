@@ -5,6 +5,11 @@
   }
   .tableSearch{
       float: right;
+      :global{
+        .ant-form-item-control{
+          line-height: normal;
+        }
+      }
       :global(.ant-form-item) {
           float: left;
           margin: -4px 0 0 0;
@@ -17,7 +22,7 @@
               margin: 0;
           }
       }
-  }  
+  }
 }
 .tdWidth{
  :global(.ant-table-row) {
@@ -25,7 +30,7 @@
       max-width: 200px;
       white-space: nowrap;
       text-overflow: ellipsis;
-      overflow: hidden; 
+      overflow: hidden;
   }
  }
 }

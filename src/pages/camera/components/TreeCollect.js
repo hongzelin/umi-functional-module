@@ -1,9 +1,9 @@
 /*
- * @Author: lin.zehong 
- * @Date: 2018-12-02 22:13:59 
+ * @Author: lin.zehong
+ * @Date: 2018-12-02 22:13:59
  * @Last Modified by: lin.zehong
- * @Last Modified time: 2018-12-20 15:35:46
- * @Desc: 收藏夹--树 
+ * @Last Modified time: 2019-05-02 22:55:17
+ * @Desc: 收藏夹--树
  */
 import React from 'react';
 import { connect } from 'dva';
@@ -367,7 +367,8 @@ class TreeCollect extends React.Component {
   }
 }
 
-function mapStateToProps({ onlineCamera, publicModel }) {
+// function mapStateToProps({ onlineCamera, publicModel }) {
+function mapStateToProps({ onlineCamera }) {
   return {
     gData: onlineCamera.collectTree,
     cameraNum: onlineCamera.cameraNum,

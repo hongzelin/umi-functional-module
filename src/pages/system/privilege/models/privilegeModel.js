@@ -3,7 +3,7 @@
  * @Date: 2018-12-29 13:40:17
  * @Last Modified by: lin.zehong
  * @Last Modified time: 2019-01-02 14:11:12
- * @Desc: 菜单管理
+ * @Desc: 权限管理
  */
 
 import * as privilegeService from '../services/privilegeService';
