@@ -33,7 +33,12 @@
   },
   "dependencies": {
     "@cbd/react-imap": "^0.1.152",
+    "jsplumb": "^2.9.3",
+    "react": "^16.8.6",
     "react-cropper": "^1.0.1",
+    "react-dnd": "^7.4.5",
+    "react-dnd-html5-backend": "^7.4.4",
+    "react-dom": "^16.8.6",
     "supercluster": "^5.0.0",
     "zteui-icon": "^1.59.0"
   }

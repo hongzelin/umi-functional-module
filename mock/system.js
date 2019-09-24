@@ -116,7 +116,6 @@ export default {
   // 菜单end
 
   // 权限
-
   'POST /apis/system/privilegesController/qryPrivilegesPage': (req, res) => {
     res.json({
       "data": [{ "privId": 1, "privName": "系统管理员", "parentPrivId": -1, "privLevel": 1, "useState": 10301, "createUserId": null, "createTime": 1532131513000, "isLeaf": null, "related": null, "parentPrivname": "根权限", "children": [{ "privId": 55, "privName": "特殊测试", "parentPrivId": 1, "privLevel": 2, "useState": 10301, "createUserId": 600015, "createTime": 1532356380000, "isLeaf": true, "related": null, "parentPrivname": "系统管理员", "children": null, "disabled": null, "leaf": true }], "disabled": null, "leaf": null }, { "privId": 54, "privName": "普通用户", "parentPrivId": -1, "privLevel": 1, "useState": 10301, "createUserId": 600015, "createTime": 1532135611000, "isLeaf": true, "related": null, "parentPrivname": "根权限", "children": null, "disabled": null, "leaf": true }, { "privId": 68, "privName": "测试1", "parentPrivId": -1, "privLevel": 1, "useState": 10301, "createUserId": 600015, "createTime": 1532551120000, "isLeaf": true, "related": null, "parentPrivname": "根权限", "children": null, "disabled": null, "leaf": true }, { "privId": 69, "privName": "测试2", "parentPrivId": -1, "privLevel": 1, "useState": 10301, "createUserId": 600015, "createTime": 1532551133000, "isLeaf": true, "related": null, "parentPrivname": "根权限", "children": null, "disabled": null, "leaf": true }, { "privId": 70, "privName": "测试3", "parentPrivId": -1, "privLevel": 1, "useState": 10301, "createUserId": 600015, "createTime": 1532551502000, "isLeaf": true, "related": null, "parentPrivname": "根权限", "children": null, "disabled": null, "leaf": true }, { "privId": 71, "privName": "测试4", "parentPrivId": -1, "privLevel": 1, "useState": 10301, "createUserId": 600015, "createTime": 1532551502000, "isLeaf": true, "related": null, "parentPrivname": "根权限", "children": null, "disabled": null, "leaf": true }],
@@ -248,6 +247,347 @@ export default {
     });
   },
 
+  // 权限 end
+
+  // 角色
+  'POST /apis/system/rolesController/qryRolesPage': (req, res) => {
+    res.json({
+      "data": [{ "rolesId": 700001, "rolesName": "系统管理员", "useState": 10301, "createUserId": 600001, "createTime": 1528837002000, "comments": "系统管理者" }, { "rolesId": 700002, "rolesName": "普通用户", "useState": 10301, "createUserId": 600001, "createTime": 1528837007000, "comments": "系统访问者" }, { "rolesId": 700013, "rolesName": "测试用角色1_1", "useState": 10301, "createUserId": 600015, "createTime": 1532314303000, "comments": "测试用角色1测试用角色1_1" }, { "rolesId": 700014, "rolesName": "测试用角色2", "useState": 10301, "createUserId": 600015, "createTime": 1532314323000, "comments": "测试用角色2" }, { "rolesId": 700015, "rolesName": "测试用角色3", "useState": 10301, "createUserId": 600015, "createTime": 1532314377000, "comments": "测试用角色3" }, {
+        "rolesId": 700023,
+        "rolesName": "普通用户23",
+        "useState": 10301,
+        "createUserId": 600001,
+        "createTime": 1528837002000,
+        "comments": "普通用户",
+      }],
+      "errCode": '0',
+      "errMsg": '成功',
+      "totalCount": 7,
+    });
+  },
+
+  'POST /apis/system/rolesController/addRoles': (req, res) => {
+    res.json({
+      "data": {},
+      "errCode": '0',
+      "errMsg": '成功',
+    });
+  },
+
+  'POST /apis/system/rolesController/editRoles': (req, res) => {
+    res.json({
+      "data": {},
+      "errCode": '0',
+      "errMsg": '成功',
+    });
+  },
+
+  'POST /apis/system/rolesController/delRoles': (req, res) => {
+    res.json({
+      "data": {},
+      "errCode": '0',
+      "errMsg": '成功',
+    });
+  },
+
+  'POST /apis/system/rolesController/checkSysRoleName': (req, res) => {
+    const data = {
+      "data": {
+        "code": 0, // 0: 不重复; 1: 重复
+      },
+      "errCode": '0',
+      "errMsg": "success",
+    }
+    res.status(200).json(data);
+  },
+
+  'POST /apis/system/rolesController/qryRolePrivPage': (req, res) => {
+    res.json({
+      "data": [{
+        "privId": 1,
+        "privName": "系统管理员",
+        "parentPrivId": -1,
+        "privLevel": 1,
+        "useState": 10301,
+        "createUserId": null,
+        "createTime": 1532131513000,
+      }],
+      "errCode": '0',
+      "errMsg": '成功',
+      "totalCount": 1,
+    });
+  },
+
+  'POST /apis/system/rolesController/qryRolePrivPageCascade': (req, res) => {
+    res.json({
+      "data": [{
+        "privId": 1,
+        "privName": "系统管理员",
+        "parentPrivId": -1,
+        "privLevel": 1,
+        "useState": 10301,
+        "createUserId": null,
+        "createTime": 1532131513000,
+        "isLeaf": null,
+        "related": "1",
+        "parentPrivname": null,
+        "children": [{
+          "privId": 55,
+          "privName": "特殊测试",
+          "parentPrivId": 1,
+          "privLevel": 2,
+          "useState": 10301,
+          "createUserId": 600015,
+          "createTime": 1532356380000,
+          "isLeaf": null,
+          "related": "0",
+          "parentPrivname": null,
+          "children": null,
+          "disabled": false,
+          "leaf": null,
+        }],
+        "disabled": true,
+        "leaf": null,
+      }],
+      "errCode": '0',
+      "errMsg": '成功',
+      "totalCount": 7,
+    });
+  },
+
+  'POST /apis/system/rolePrivController/addRolePriv': (req, res) => {
+    res.json({
+      "data": {},
+      "errCode": '0',
+      "errMsg": '成功',
+    });
+  },
+
+  'POST /apis/system/rolePrivController/delRolePriv': (req, res) => {
+    res.json({
+      "data": {},
+      "errCode": '0',
+      "errMsg": '成功',
+    });
+  },
+
+  // 用户
+  'POST /apis/system/userController/qryUserPage': (req, res) => {
+    res.json({
+      "data": [
+        {
+          "userId": 1,
+          "userName": "zte",
+          "nickName": "zte修改",
+          "idCard": "http://10.45.47.18:8080/group1/M00/01/17/Ci0vElqsyv6AJ-tdAAAachHYd0Q074.jpg",
+          "userCode": "zte",
+          "password": "c12e01f2a13ff5587e1e9e4aedb8242d",
+          "mobileNo": "13777777777",
+          "email": "",
+          "useState": 10301,
+          "createUserId": 600001,
+          "createTime": 1528832386000,
+          "comments": "系统访问者",
+          "latestLoginTime": 1528832395000,
+          "roles": [{
+            "rolesId": 700002,
+            "rolesName": "普通用户",
+            "useState": 10301,
+            "createUserId": 600001,
+            "createTime": 1528837007000,
+            "comments": "系统访问者",
+          }],
+          "projectNames": [],
+        }, {
+          "userId": 600015,
+          "userName": "admin管理员",
+          "nickName": "admin",
+          "idCard": "http://10.45.47.18:8080/group1/M00/01/17/Ci0vElqsyv6AJ-tdAAAachHYd0Q074.jpg",
+          "userCode": "admin",
+          "password": "f03f6ee8a23d04a183dc36b05d6a0ce3",
+          "mobileNo": "13631377878",
+          "email": "admin@163.com",
+          "useState": 10301,
+          "createUserId": 1,
+          "createTime": 1530115731000,
+          "comments": "管理员",
+          "latestLoginTime": null,
+          "roles": [{
+            "rolesId": 700001,
+            "rolesName": "系统管理员",
+            "useState": 10301,
+            "createUserId": 600001,
+            "createTime": 1528837002000,
+            "comments": "系统管理者",
+          }],
+          "projectNames": [],
+        }, {
+          "userId": 600026,
+          "userName": "测试1",
+          "nickName": "测试仔",
+          "idCard": "http://10.45.47.18:8080/group1/M00/01/17/Ci0vElqsyv6AJ-tdAAAachHYd0Q074.jpg",
+          "userCode": "dw_ceshi1",
+          "password": "78302615c8b79cac8df6d2607f8a83ee",
+          "mobileNo": "18888888888",
+          "email": "1@qq.com",
+          "useState": 10301,
+          "createUserId": 600015,
+          "createTime": 1532359929000,
+          "comments": "111",
+          "latestLoginTime": null,
+          "roles": [{
+            "rolesId": 700001,
+            "rolesName": "系统管理员",
+            "useState": 10301,
+            "createUserId": 600001,
+            "createTime": 1528837002000,
+            "comments": "系统管理者",
+          }, {
+            "rolesId": 700002,
+            "rolesName": "普通用户",
+            "useState": 10301,
+            "createUserId": 600001,
+            "createTime": 1528837007000,
+            "comments": "系统访问者",
+          }, {
+            "rolesId": 700013,
+            "rolesName": "测试用角色1_1",
+            "useState": 10301,
+            "createUserId": 600015,
+            "createTime": 1532314303000,
+            "comments": "测试用角色1测试用角色1_1",
+          }, {
+            "rolesId": 700014,
+            "rolesName": "测试用角色2",
+            "useState": 10301,
+            "createUserId": 600015,
+            "createTime": 1532314323000,
+            "comments": "测试用角色2",
+          }, {
+            "rolesId": 700015,
+            "rolesName": "测试用角色3",
+            "useState": 10301,
+            "createUserId": 600015,
+            "createTime": 1532314377000,
+            "comments": "测试用角色3",
+          }, {
+            "rolesId": 700016,
+            "rolesName": "测试用角色4",
+            "useState": 10301,
+            "createUserId": 600015,
+            "createTime": 1532314387000,
+            "comments": "测试用角色4",
+          }, {
+            "rolesId": 700017,
+            "rolesName": "测试用角色5",
+            "useState": 10301,
+            "createUserId": 600015,
+            "createTime": 1532314525000,
+            "comments": "测试用角色5",
+          }],
+          "projectNames": [],
+        }, {
+          "userId": 600027,
+          "userName": "cham",
+          "nickName": "cham",
+          "idCard": "http://10.45.47.18:8080/group1/M00/01/17/Ci0vElqsyv6AJ-tdAAAachHYd0Q074.jpg",
+          "userCode": "cham",
+          "password": "18e0e5f3389efa0b31738c2fd44630d8",
+          "mobileNo": "15922222222",
+          "email": "cham@c.com",
+          "useState": 10301,
+          "createUserId": 600015,
+          "createTime": 1532632905000,
+          "comments": "cham",
+          "latestLoginTime": null,
+          "roles": [{
+            "rolesId": 700001,
+            "rolesName": "系统管理员",
+            "useState": 10301,
+            "createUserId": 600001,
+            "createTime": 1528837002000,
+            "comments": "系统管理者",
+          }],
+          "projectNames": [],
+        }],
+      "errCode": '0',
+      "errMsg": '成功',
+      "totalCount": 4,
+    });
+  },
+
+  'POST /apis/system/userController/checkUserCode': (req, res) => {
+    const data = {
+      "data": {
+        "code": '0', // 0: 不重复; 1: 重复
+      },
+      "errCode": '0',
+      "errMsg": "success",
+    }
+    res.status(200).json(data);
+  },
+
+  'POST /apis/system/userController/qryUserRolePage': (req, res) => {
+    const data = {
+      "data": [
+        {
+          "rolesId": 700001,
+          "userId": 1,
+          "createUserId": 600001,
+          "createTime": 1528837007000,
+        },
+        {
+          "rolesId": 700002,
+          "userId": 2,
+          "createUserId": 600001,
+          "createTime": 1528837007000,
+        },
+      ],
+      "errCode": '0',
+      "errMsg": "success",
+    }
+    res.status(200).json(data);
+  },
+
+  'POST /apis/system/userController/addUser': (req, res) => {
+    const data = {
+      "data": {},
+      "errCode": '0',
+      "errMsg": "success",
+    }
+    res.status(200).json(data);
+  },
+
+  'POST /apis/system/userController/editUser': (req, res) => {
+    const data = {
+      "data": {},
+      "errCode": '0',
+      "errMsg": "success",
+    }
+    res.status(200).json(data);
+  },
+
+  'POST /apis/system/userController/delUser': (req, res) => {
+    const data = {
+      "data": {},
+      "errCode": '0',
+      "errMsg": "success",
+    }
+    res.status(200).json(data);
+  },
+
+  
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -262,7 +602,7 @@ export default {
     });
   },
 
-  'POST /apis/system/userController/qryUserPage': (req, res) => {
+  'POST /apis/system/userController/qryUserPage1': (req, res) => {
     res.json({
       "data": { "totalCount": 4, "pageInfo": { "currentPage": 1, "pageSize": 10, "totalRow": 4, "pageCount": 1 }, "page": 1, "list": [{ "userId": 1, "userName": "zte", "nickName": "zte修改", "idCard": "http://10.45.47.18:8080/group1/M00/01/17/Ci0vElqsyv6AJ-tdAAAachHYd0Q074.jpg", "userCode": "zte", "password": "c12e01f2a13ff5587e1e9e4aedb8242d", "mobileNo": "13777777777", "email": "", "useState": 10301, "createUserId": 600001, "createTime": 1528832386000, "comments": "系统访问者", "latestLoginTime": 1528832395000, "roles": [{ "rolesId": 700002, "rolesName": "普通用户", "useState": 10301, "createUserId": 600001, "createTime": 1528837007000, "comments": "系统访问者" }], "projectNames": [] }, { "userId": 600015, "userName": "admin管理员", "nickName": "admin", "idCard": "http://10.45.47.18:8080/group1/M00/01/17/Ci0vElqsyv6AJ-tdAAAachHYd0Q074.jpg", "userCode": "admin", "password": "f03f6ee8a23d04a183dc36b05d6a0ce3", "mobileNo": "13631377878", "email": "admin@163.com", "useState": 10301, "createUserId": 1, "createTime": 1530115731000, "comments": "管理员", "latestLoginTime": null, "roles": [{ "rolesId": 700001, "rolesName": "系统管理员", "useState": 10301, "createUserId": 600001, "createTime": 1528837002000, "comments": "系统管理者" }], "projectNames": [] }, { "userId": 600026, "userName": "测试1", "nickName": "测试仔", "idCard": "http://10.45.47.18:8080/group1/M00/01/17/Ci0vElqsyv6AJ-tdAAAachHYd0Q074.jpg", "userCode": "dw_ceshi1", "password": "78302615c8b79cac8df6d2607f8a83ee", "mobileNo": "18888888888", "email": "1@qq.com", "useState": 10301, "createUserId": 600015, "createTime": 1532359929000, "comments": "111", "latestLoginTime": null, "roles": [{ "rolesId": 700001, "rolesName": "系统管理员", "useState": 10301, "createUserId": 600001, "createTime": 1528837002000, "comments": "系统管理者" }, { "rolesId": 700002, "rolesName": "普通用户", "useState": 10301, "createUserId": 600001, "createTime": 1528837007000, "comments": "系统访问者" }, { "rolesId": 700013, "rolesName": "测试用角色1_1", "useState": 10301, "createUserId": 600015, "createTime": 1532314303000, "comments": "测试用角色1测试用角色1_1" }, { "rolesId": 700014, "rolesName": "测试用角色2", "useState": 10301, "createUserId": 600015, "createTime": 1532314323000, "comments": "测试用角色2" }, { "rolesId": 700015, "rolesName": "测试用角色3", "useState": 10301, "createUserId": 600015, "createTime": 1532314377000, "comments": "测试用角色3" }, { "rolesId": 700016, "rolesName": "测试用角色4", "useState": 10301, "createUserId": 600015, "createTime": 1532314387000, "comments": "测试用角色4" }, { "rolesId": 700017, "rolesName": "测试用角色5", "useState": 10301, "createUserId": 600015, "createTime": 1532314525000, "comments": "测试用角色5" }], "projectNames": [] }, { "userId": 600027, "userName": "cham", "nickName": "cham", "idCard": "http://10.45.47.18:8080/group1/M00/01/17/Ci0vElqsyv6AJ-tdAAAachHYd0Q074.jpg", "userCode": "cham", "password": "18e0e5f3389efa0b31738c2fd44630d8", "mobileNo": "15922222222", "email": "cham@c.com", "useState": 10301, "createUserId": 600015, "createTime": 1532632905000, "comments": "cham", "latestLoginTime": null, "roles": [{ "rolesId": 700001, "rolesName": "系统管理员", "useState": 10301, "createUserId": 600001, "createTime": 1528837002000, "comments": "系统管理者" }], "projectNames": [] }] }, "code": "0", "message": "SUCCESS",
       errCode: '0',
@@ -270,13 +610,6 @@ export default {
     });
   },
 
-  'POST /apis/system/rolesController/qryRolesPage': (req, res) => {
-    res.json({
-      "data": { "totalCount": 7, "pageInfo": { "currentPage": 1, "pageSize": 5, "totalRow": 7, "pageCount": 2 }, "page": 1, "list": [{ "rolesId": 700001, "rolesName": "系统管理员", "useState": 10301, "createUserId": 600001, "createTime": 1528837002000, "comments": "系统管理者" }, { "rolesId": 700002, "rolesName": "普通用户", "useState": 10301, "createUserId": 600001, "createTime": 1528837007000, "comments": "系统访问者" }, { "rolesId": 700013, "rolesName": "测试用角色1_1", "useState": 10301, "createUserId": 600015, "createTime": 1532314303000, "comments": "测试用角色1测试用角色1_1" }, { "rolesId": 700014, "rolesName": "测试用角色2", "useState": 10301, "createUserId": 600015, "createTime": 1532314323000, "comments": "测试用角色2" }, { "rolesId": 700015, "rolesName": "测试用角色3", "useState": 10301, "createUserId": 600015, "createTime": 1532314377000, "comments": "测试用角色3" }] }, "code": "0", "message": "SUCCESS",
-      errCode: '0',
-      errMsg: '成功',
-    });
-  },
 
   'POST /apis/system/apiController/qryApiPage': (req, res) => {
     res.json({

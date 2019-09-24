@@ -1,0 +1,41 @@
+:global{
+  .main_header{
+    background: #fff;
+    text-align: right;
+    padding: 0 8px;
+    border: 1px solid #ccc;
+    border-top: 0;
+    height: 37.5px;
+    .header_section {
+      padding: 0 8px;
+      height: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      i {
+        font-size: 20px;
+        margin: 0 8px;
+        cursor: pointer;
+        &:hover{
+          color: #0070CC;
+        }
+      }
+    }
+    .header--detail{
+      i {
+        cursor: default;
+        color: #ccc;
+        &:hover{
+          color: #ccc;
+        }
+      }
+    }
+    i.isActive{
+      cursor: default;
+      color: #ccc;
+      &:hover{
+        color: #ccc;
+      }
+    }
+  }
+}

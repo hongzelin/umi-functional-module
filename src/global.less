@@ -2,11 +2,12 @@
  * @Author: lin.zehong
  * @Date: 2018-12-20 15:00:27
  * @Last Modified by: lin.zehong
- * @Last Modified time: 2018-12-29 14:45:43
+ * @Last Modified time: 2019-06-26 15:46:15
  * @Desc: 用于存放全局变量，比如 边框颜色 不同类型的字体颜色 大小
  */
 
 // @import "antd/dist/antd.less";   // 引入官方提供的 less 样式入口文件
+@import '//at.alicdn.com/t/font_467405_x3rwr6lkkv.css';
 
 .baseBorder(@radius: 4px) {
   border: 1px solid @border-color;
@@ -54,8 +55,14 @@ figure,p{
 a{
   text-decoration: none;
 }
+ol, ul, dl {
+  margin-top: 0;
+  margin-bottom: 1em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-// temp fix for https://github.com/ant-design/ant-design/commit/a1fafb5b727b62cb0be29ce6e9eca8f579d4f8b7
 :global {
   .ant-spin-container {
     overflow: visible !important;
@@ -89,4 +96,43 @@ a{
   .ant-carousel .slick-dots li {
     background: #ccc;
   }
+}
+
+/*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+/*定义滚动条的轨道，内阴影及圆角*/
+*::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: rgba(230, 230, 230, 0.05);
+}
+
+*:hover::-webkit-scrollbar-track {
+  background-color: rgba(230, 230, 230, 0.5);
+}
+
+/*定义滑块，内阴影及圆角*/
+
+*::-webkit-scrollbar-thumb {
+  height: 20px;
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+  background-color: rgba(216, 216, 216, 0.4);
+  transition: background-color 1s;
+}
+
+*:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(216, 216, 216, 1);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(190, 190, 190, 1);
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: rgba(160, 160, 160, 1);
 }

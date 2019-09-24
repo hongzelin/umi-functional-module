@@ -14,8 +14,17 @@ const getSxjlx = data => post("/manage/sxt/sxjlx", data); // 摄像机类型
 const tableApi = ({ api, pageSize, pageNum, query }) =>
   post(api, { pageSize, pageNum, ...query });
 
+/**
+ * 静态数据
+ * @param {string} paramKey - 对应后台的编码 key
+*/
+const selectApi = ({ paramKey, query }) =>
+  post('/public/qryStaticData', { paramKey, ...query });
+
 export default {
   xzqhQuery,
   getSxjlx,
   tableApi,
+  selectApi,
 };
+

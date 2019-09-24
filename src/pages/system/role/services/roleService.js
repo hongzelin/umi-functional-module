@@ -44,8 +44,8 @@ export const checkRoleName = ({ rolesName }) =>
 /**
 * 新增角色权限关联
 * @param {array} list - ListMap，对象属性如下
-*     @param {number} rolesId - 角色id
-*     @param {number} privId - 权限id
+* @param {number} rolesId - 角色id
+* @param {number} privId - 权限id
 */
 export const addRolePriv = ({ list }) =>
   post('/system/rolePrivController/addRolePriv', { list });
