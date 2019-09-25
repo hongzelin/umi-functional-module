@@ -1,0 +1,58 @@
+.root{
+  .top{
+    display: flex;
+    align-items: center;
+    .icon{
+      width: @vh2;
+    }
+    .title{
+      font-weight: 500;
+      color: rgba(204,204,204,1);
+      margin: 0 1vh;
+      font-size: @vh2;
+    }
+    .level1{
+      font-weight: 400;
+      font-style: italic;
+      color: #FF5B7A;
+      font-size: @vh1;
+    }
+    .level2{
+      font-weight: 400;
+      font-style: italic;
+      color: rgba(233,157,58,1);
+      font-size: @vh1;
+    }
+  }
+  .detail {
+    border: 1px dotted;
+    border-image: linear-gradient( rgba(0,204,255,1), rgba(42,84,180,1)) 45 45;
+    padding: @vh1;
+    margin-top: @vh1;
+    text-align: center;
+    .icon{
+      width: @vh4;
+    }
+    .title{
+      font-weight: bold;
+      color: rgba(255,255,255,1);
+      margin: @vh1 0;
+      font-size: @vh1;
+    }
+    .num{
+      font-weight: 500;
+      color: rgba(204,204,204,1);
+      font-size: 0.5vh;
+    }
+    .list{
+      .item{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5vh;
+        font-weight:500;
+        color:rgba(204,204,204,1);
+        font-size: 1vh;
+      }
+    }
+  }
+}

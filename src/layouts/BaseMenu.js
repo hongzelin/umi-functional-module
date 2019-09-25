@@ -28,6 +28,12 @@ const BaseMenu = ({ location }) => (
         <span>任务配置</span>
       </Link>
     </Menu.Item>
+    <Menu.Item key="/zttsleft">
+      <Link to="/zttsleft">
+        <Icon type="user" />
+        <span>大屏 echarts</span>
+      </Link>
+    </Menu.Item>
     <Menu.Item key="/camera">
       <Link to="/camera">
         <Icon type="video-camera" />

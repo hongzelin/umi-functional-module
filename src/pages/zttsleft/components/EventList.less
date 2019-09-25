@@ -1,0 +1,108 @@
+.root{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  .header{
+    display: flex;
+    margin-bottom: 2vh;
+    .title{
+      background: #88A7BE;
+      font-size: 2vh;
+      font-weight: 400;
+      color: #85d3ff;
+      margin: 0 1vh;
+      text-align: center;
+      padding: 1vh;
+      &:nth-child(1){
+        flex: 3;
+      }
+      &:nth-child(2){
+        flex: 1;
+      }
+      &:nth-child(3){
+        flex: 3;
+      }
+      &:nth-child(4){
+        flex: 6;
+      }
+    }
+  }
+  .content{
+    max-height: 35vh;
+    overflow: hidden;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    .field{
+      font-size: 2vh;
+      display: flex;
+      margin-bottom: 2vh;
+      .time{
+        font-weight:400;
+        color:rgba(255,255,255,1);
+        text-align: left;
+        padding: 1vh;
+        background: #9FA6AD;
+        margin: 0 1vh;
+        flex: 3;
+      }
+      .level1{
+        font-weight:400;
+        font-style:italic;
+        color:rgba(255,91,122,1);
+        text-align: left;
+        padding: 1vh;
+        background: #9FA6AD;
+        margin: 0 1vh;
+        flex: 1;
+      }
+      .level2{
+        font-weight:400;
+        font-style:italic;
+        color:#E99D3A;
+        text-align: left;
+        padding: 1vh;
+        background: #9FA6AD;
+        margin: 0 1vh;
+        flex: 1;
+      }
+      .type{
+        font-weight:400;
+        color:rgba(255,255,255,1);
+        text-align: left;
+        padding: 1vh;
+        background: #9FA6AD;
+        margin: 0 1vh;
+        flex: 3;
+      }
+      .event{
+        font-weight:400;
+        color:rgba(255,255,255,1);
+        text-align: left;
+        padding: 1vh;
+        background: #9FA6AD;
+        margin: 0 1vh;
+        flex: 6;
+      }
+      &:nth-child(even){
+        .time{
+          background: #8B9BA8;
+        }
+        .level1{
+          background: #8B9BA8;
+        }
+        .level2{
+          background: #8B9BA8;
+        }
+        .type{
+          background: #8B9BA8;
+        }
+        .event{
+          background: #8B9BA8;
+        }
+      }
+    }
+  }
+}

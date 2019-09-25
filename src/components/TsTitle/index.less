@@ -1,0 +1,51 @@
+.root{
+  display: flex;
+  text-align: left;
+  .wrapName{
+    display: flex;
+    align-items: center;
+  }
+  .icon{
+    width: @vh2;
+    margin-right: @vh1;
+  }
+  .title{
+    font-size: @vh3;
+    font-weight: 400;
+    color: rgba(255,255,255,1);
+  }
+  .wrapLine{
+    flex: 1;
+    display: flex;
+    position: relative;
+    margin-left: @vh1;
+  }
+  .lineColorTitle{
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #999;
+    font-size: @vh1;
+    margin-top: @vh1;
+  }
+  .lineColor{
+    display: inline-block;
+    width: @vh4;
+    border: 2px solid #06A8FD;
+    align-self: flex-end;
+    margin-left: 0.5vh;
+  }
+  .line{
+    display: inline-block;
+    width: @vh4;
+    border: 1px solid #fff;
+    align-self: flex-end;
+    flex: 1;
+    opacity:0.2;
+  }
+  .name{
+    font-weight:400;
+    color:rgba(0,204,255,1);
+    font-size: 2.7vh;
+  }
+}
