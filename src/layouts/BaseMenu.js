@@ -34,6 +34,12 @@ const BaseMenu = ({ location }) => (
         <span>大屏 echarts</span>
       </Link>
     </Menu.Item>
+    <Menu.Item key="/workbench">
+      <Link to="/workbench">
+        <Icon type="user" />
+        <span>个人工作平台</span>
+      </Link>
+    </Menu.Item>
     <Menu.Item key="/camera">
       <Link to="/camera">
         <Icon type="video-camera" />
