@@ -2,7 +2,7 @@
  * @Author: lin.zehong
  * @Date: 2018-12-26 22:17:14
  * @Last Modified by: lin.zehong
- * @Last Modified time: 2018-12-28 16:43:32
+ * @Last Modified time: 2019-09-25 10:53:04
  * @Desc: Table 组件
  */
 
@@ -24,7 +24,7 @@ export default {
       const { api, pageSize, pageNum, query } = payload;
       let result = {}
       result = yield call(tableApi, { api, pageNum, pageSize, query });
-      if(result.errCode === "0") {
+      if (result.errCode === "0" || result.errCode === 0) {
         return result;
       } else {
         return {};

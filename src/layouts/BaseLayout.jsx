@@ -2,7 +2,7 @@
  * @Author: lin.zehong
  * @Date: 2018-12-20 13:54:23
  * @Last Modified by: lin.zehong
- * @Last Modified time: 2018-12-25 17:18:50
+ * @Last Modified time: 2019-09-25 10:19:50
  * @Desc: 基础布局
  */
 import React from 'react';
@@ -23,6 +23,12 @@ class BaseLayout extends React.Component {
   state = {
     collapsed: false,
   };
+
+  componentDidMount() {
+    const { getUserInfo } = this.props;
+    // 获取用户信息
+    getUserInfo();
+  }
 
   toggle = () => {
     const { collapsed } = this.state;
@@ -71,4 +77,19 @@ class BaseLayout extends React.Component {
   }
 }
 
-export default withRouter(BaseLayout);
+const mapDispatchToProps = dispatch => ({
+  getUserInfo(payload) {
+    dispatch({
+      type: "publicModel/getUserInfo",
+      payload,
+    });
+  },
+});
+
+function mapStateToProps({ publicModel }) {
+  return {
+    userName: publicModel.userName,
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(BaseLayout));

@@ -1,7 +1,6 @@
 .root {
   .search {
     display: flex;
-    display: flex;
     :global {
       .ant-input {
         // display: inline-block;
@@ -12,6 +11,11 @@
   }
   .content {
     margin-top: 1rem;
+  }
+  :global {
+    .ant-table-tbody > tr:hover:not(.ant-table-expanded-row) > td[rowspan] {
+      background: yellow!important;
+    }
   }
 }
 .tip {

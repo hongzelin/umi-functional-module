@@ -2,7 +2,7 @@
  * @Author: lin.zehong
  * @Date: 2018-12-29 09:52:04
  * @Last Modified by: lin.zehong
- * @Last Modified time: 2019-01-07 14:05:57
+ * @Last Modified time: 2019-09-25 11:16:49
  * @Desc: 基础Table组件，基于Antd Table
  */
 import React from 'react';
@@ -43,7 +43,15 @@ class TableTemplate extends React.Component {
   }
 
   componentDidMount() {
-    this.getData();
+    const { isStatic, defaultPageSize } = this.props;
+    if (defaultPageSize) {
+      this.setState({
+        pageSize: defaultPageSize,
+      });
+    }
+    if (!isStatic) {
+      this.getData();
+    }
   }
 
   componentDidUpdate = prevProps => {
@@ -91,13 +99,15 @@ class TableTemplate extends React.Component {
   }
 
   // 处理数据
-  handleData = (result) => {
+  handleData = result => {
     const { data, totalCount } = result;
+    const { options = {} } = this.props;
+    const { isList } = options || {};
     this.setState({
-      list: data,
+      list: isList ? (data && data.list) : (Array.isArray(data) && data) || [],
       total: totalCount,
-    })
-  }
+    });
+  };
 
   changePageNum = (pageNum) => {
     this.setState({ pageNum });
@@ -126,7 +136,11 @@ class TableTemplate extends React.Component {
 
   render() {
     const { pageSize, total, pageNum, list } = this.state;
-    const { columns, pagination, loading, rowSelection, onRow, rowKey, isShowTip, selectKeysNums, handleSelectRows } = this.props;
+    const {
+      columns, pagination, loading, rowSelection,
+      onRow, rowKey, isShowTip, selectKeysNums,
+      handleSelectRows, isStatic, dataStatic, options = {},
+    } = this.props;
 
     const tipContent = (
       <div className={styles.message}>
@@ -161,18 +175,19 @@ class TableTemplate extends React.Component {
 
     return (
       <div className={styles.root}>
-        <Spin spinning={loading}>
+        <Spin spinning={isStatic ? false : loading}>
           {/* <div className={styles.search}>{searchRender}</div> */}
           {isShowTip ? tipContent : null}
           <div className={styles.content}>
             <Table
               columns={columns}
-              dataSource={list}
+              dataSource={isStatic ? dataStatic : list}
               pagination={pagination ? paginationData : false}
               rowKey={record => record[rowKey]}
               rowSelection={rowSelection}
               onRow={onRow}
               rowClassName={this.rowClassName} // 权限选中样式特殊处理
+              {...options}
             // expandedRowKeys={expandedRowKeys}
             />
           </div>

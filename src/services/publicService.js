@@ -1,4 +1,4 @@
-import { post } from "../utils/request";
+import { post, get } from "../utils/request";
 
 const xzqhQuery = data => post("/manage/xzqh/query", data); // 行政区划
 const getSxjlx = data => post("/manage/sxt/sxjlx", data); // 摄像机类型
@@ -21,10 +21,16 @@ const tableApi = ({ api, pageSize, pageNum, query }) =>
 const selectApi = ({ paramKey, query }) =>
   post('/public/qryStaticData', { paramKey, ...query });
 
+
+/**
+* 获取用户信息和權限信息
+*/
+const getUserInfo = () => get('/permission/user-info', {});
+
 export default {
   xzqhQuery,
   getSxjlx,
   tableApi,
   selectApi,
+  getUserInfo,
 };
-
